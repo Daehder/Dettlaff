@@ -7,6 +7,10 @@
 #include "boards_config.cpp"
 #include "types.h"
 
+#include <SimpleSerialShell.h>
+
+#include "Pushers/solenoid.h"
+
 // Configuration Variables
 
 char wifiSsid[32] = "ssid";
@@ -91,6 +95,10 @@ void setup()
 {
     Serial.begin(115200);
     Serial.println("Booting");
+
+    shell.attach(Serial);
+    shell.addCommand(F("Solenoid"), shellCommandSolenoid);
+
     if (pins.flywheel) {
         pinMode(pins.flywheel, OUTPUT);
         digitalWrite(pins.flywheel, HIGH);
