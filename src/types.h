@@ -2,13 +2,15 @@
 #define __types_h_
 #include <Arduino.h>
 
-enum flywheelState_t {
+enum flywheelState_t
+{
   STATE_IDLE,
   STATE_ACCELERATING, // ACCELERATING = wheels not yet at full speed
-  STATE_FULLSPEED, // REV = wheels at full speed
+  STATE_FULLSPEED,    // REV = wheels at full speed
 };
 
-typedef struct {
+typedef struct
+{
   int8_t revSwitch;
   int8_t triggerSwitch;
   int8_t cycleSwitch;
@@ -24,9 +26,10 @@ typedef struct {
   int8_t batteryADC;
 } pins_t;
 
-enum pusherType_t {
+enum pusherType_t
+{
   NO_PUSHER,
   PUSHER_MOTOR_CLOSEDLOOP,
   PUSHER_SOLENOID_OPENLOOP
 };
-#endif
+#endif // __types_h_
